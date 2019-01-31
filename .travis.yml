@@ -2,6 +2,13 @@ language: node_js
 node_js: node
 cache:
   directories:
-    - node_modules
+  - node_modules
 env:
-  - CI=true
+- CI=true
+deploy:
+  provider: heroku
+  api_key:
+    secure: P3M9jsCZCae+hT6VV1ehB5wxWQr05PvRD+gTh9CaPOHFbjxv6PHX++RRmE3aR2Ai81brsq5jhsIZlHwg+cByzZpcE58rMKEaxC6Mo6tL42q0+c+9AljlW1K/bQv8g3TEgttNYAWAqjg/6kSsPaArFJDXoOh5WpPV8xO/Okq3duzz7hhaFs1jexntzmEOa5VbfLjp8os/+Iz10iPJO6ciPJA5LtFYTyuV7mYKM42ENRHscoQznnlrKo/5oJG04GUytz+9eE032JhOzO4n9hof8bnV/vjz2S4xfQdrWqgLzQulf7ygDqKUqK+KRpbSfhHHdEMFE64TqIaPVuoi3YrUVkHZa91Byc5K2m//kJgh8rGzLbCm7Feiv/ldTC4G2sOpSGVsEDqVI/Id8x9BHFuoCRK2UJVkmX5aS1a4BOzPNs2hpXmc1gPw/kIOXTVI8GIJ5fRRPbU+NxdiIwCORMkKWQjtipgzn1v1NbW8I0WUgX50Y+p83OAdt7nSLfuCnjKwOOwnsSwQ98IKRG2jFg2kekcRMTqYmpJ+WEhcGN9WamQO0oJ2XmOVq40yUOe9PqRxJx/4cW282T8NptB6Tdj/RTP7KR67YKwehtSE9FVVaLNcrf4kxuyn9iRP+ixkU+YRqtxVofinwLVpY97wag8uIUHzzu9CbdbF9niTjmrhP44=
+  app: glacial-hollows-88359
+  on:
+    repo: DeliaCodes/react-hot-cold
