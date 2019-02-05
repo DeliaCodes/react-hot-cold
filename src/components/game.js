@@ -7,7 +7,7 @@ import GuessSection from './guess-section';
 import StatusSection from './status-section';
 import InfoSection from './info-section';
 
-export default class Game extends React.Component {
+export class Game extends React.Component {
   constructor(props) {
     super(props);
     /*  this.state = {
@@ -108,11 +108,11 @@ export default class Game extends React.Component {
 }
 
 Game.defaulProps = {
-  // do I need this
+  // do I need this?
 }
 
 
-export const mapStateToProps = state({
+export const mapStateToProps = state => ({
   guesses: state.guesses,
   feedback: state.feedback,
   auralFeedback: state.auralFeedback,
