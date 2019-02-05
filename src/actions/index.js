@@ -15,3 +15,9 @@ export const setFeedback = feedback => ({
     type: SET_FEEDBACK,
     feedback
 })
+
+export const SET_AURAL_STATUS = 'SET_AURAL_STATUS';
+export const setAuralFeedback = auralFeedback => ({
+    type: SET_AURAL_STATUS,
+    auralFeedback
+})

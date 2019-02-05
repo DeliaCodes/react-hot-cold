@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { makeGuessAction, resetGame, setFeedback } from '../actions';
+import { makeGuessAction, resetGame, setFeedback, setAuralFeedback } from '../actions';
 
 import Header from './header';
 import GuessSection from './guess-section';
@@ -77,7 +77,7 @@ export default class Game extends React.Component {
       auralStatus += ` ${pluralize ? 'In order of most- to least-recent, they are' : 'It was'}: ${guesses.reverse().join(', ')}`;
     }
 
-
+    props.dispatch(setAuralFeedback(auralStatus));
     // this.setState({ auralStatus });
   }
 
@@ -108,18 +108,14 @@ export default class Game extends React.Component {
 }
 
 Game.defaulProps = {
-  guesses: [],
-  feedback: 'Make your guess!',
-  auralStatus: '',
-  // should correctAnswer be the equation? or something else?
-  correctAnswer: Math.floor(Math.random() * 100) + 1
+  // do I need this
 }
 
 
 export const mapStateToProps = state({
   guesses: state.guesses,
   feedback: state.feedback,
-  auralStatus: state.auralStatus,
+  auralFeedback: state.auralFeedback,
   correctAnswer: state.correctAnswer
 })
 
