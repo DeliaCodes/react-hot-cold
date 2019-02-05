@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { makeGuess, resetGame } from '../actions';
+import { makeGuessAction, resetGame, setFeedback } from '../actions';
 
 import Header from './header';
 import GuessSection from './guess-section';
@@ -25,11 +25,13 @@ export default class Game extends React.Component {
       auralStatus: '',
       correctAnswer: Math.floor(Math.random() * 100) + 1
     }); */
+    props.dispatch(resetGame());
   }
 
   makeGuess(guess) {
     guess = parseInt(guess, 10);
     if (isNaN(guess)) {
+      props.dispatch(setFeedback('Please enter a valid number'));
       //this.setState({ feedback: 'Please enter a valid number' });
       return;
     }
@@ -48,7 +50,8 @@ export default class Game extends React.Component {
     } else {
       feedback = 'You got it!';
     }
-
+    props.dispatch(makeGuessAction(guess));
+    props.dispatch(setFeedback(feedback))
     /* this.setState({
       feedback,
       guesses: [...this.state.guesses, guess]
