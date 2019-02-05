@@ -9,10 +9,11 @@ describe("Renders Status Section", () => {
     const myGuesses = [2];
     shallow(<StatusSection guesses={myGuesses} />);
   });
-  xit('renders correct number of guesses', () => {
-    const moreMyGuesses = [9, 6, 50]
+  it("renders correct number of guesses", () => {
+    const moreMyGuesses = [9, 6, 50];
     const wrapper = shallow(<StatusSection guesses={moreMyGuesses} />);
-    console.log('wrapper', wrapper.html);
-    expect(wrapper.html).toContain('3');
+    // console.log("wrapper", wrapper.html());
+    // specificity in expect and the assertion
+    expect(wrapper.html()).toContain('<span id="count">3</span>');
   });
 });
