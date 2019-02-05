@@ -30,7 +30,7 @@ export default class Game extends React.Component {
   makeGuess(guess) {
     guess = parseInt(guess, 10);
     if (isNaN(guess)) {
-      this.setState({ feedback: 'Please enter a valid number' });
+      //this.setState({ feedback: 'Please enter a valid number' });
       return;
     }
 
@@ -49,10 +49,10 @@ export default class Game extends React.Component {
       feedback = 'You got it!';
     }
 
-    this.setState({
+    /* this.setState({
       feedback,
       guesses: [...this.state.guesses, guess]
-    });
+    }); */
 
     // We typically wouldn't touch the DOM directly like this in React
     // but this is the best way to update the title of the page,
@@ -75,7 +75,7 @@ export default class Game extends React.Component {
     }
 
 
-    this.setState({ auralStatus });
+    // this.setState({ auralStatus });
   }
 
   render() {
@@ -108,6 +108,7 @@ Game.defaulProps = {
   guesses: [],
   feedback: 'Make your guess!',
   auralStatus: '',
+  // should correctAnswer be the equation? or something else?
   correctAnswer: Math.floor(Math.random() * 100) + 1
 }
 
