@@ -1,4 +1,6 @@
 import React from 'react';
+import { connect } from 'react-redux';
+import { makeGuess, resetGame } from '../actions';
 
 import Header from './header';
 import GuessSection from './guess-section';
@@ -8,21 +10,21 @@ import InfoSection from './info-section';
 export default class Game extends React.Component {
   constructor(props) {
     super(props);
-    this.state = {
-      guesses: [],
-      feedback: 'Make your guess!',
-      auralStatus: '',
-      correctAnswer: Math.floor(Math.random() * 100) + 1
-    };
+    /*  this.state = {
+       guesses: [],
+       feedback: 'Make your guess!',
+       auralStatus: '',
+       correctAnswer: Math.floor(Math.random() * 100) + 1
+     }; */
   }
 
   restartGame() {
-    this.setState({
+    /* this.setState({
       guesses: [],
       feedback: 'Make your guess!',
       auralStatus: '',
       correctAnswer: Math.floor(Math.random() * 100) + 1
-    });
+    }); */
   }
 
   makeGuess(guess) {
@@ -66,7 +68,7 @@ export default class Game extends React.Component {
     // pluralize the nouns in this aural update.
     const pluralize = guesses.length !== 1;
 
-    let  auralStatus = `Here's the status of the game right now: ${feedback} You've made ${guesses.length} ${pluralize ? 'guesses' : 'guess'}.`;
+    let auralStatus = `Here's the status of the game right now: ${feedback} You've made ${guesses.length} ${pluralize ? 'guesses' : 'guess'}.`;
 
     if (guesses.length > 0) {
       auralStatus += ` ${pluralize ? 'In order of most- to least-recent, they are' : 'It was'}: ${guesses.reverse().join(', ')}`;
@@ -92,7 +94,7 @@ export default class Game extends React.Component {
             guessCount={guessCount}
             onMakeGuess={guess => this.makeGuess(guess)}
           />
-          <StatusSection guesses={guesses} 
+          <StatusSection guesses={guesses}
             auralStatus={auralStatus}
           />
           <InfoSection />
@@ -101,3 +103,20 @@ export default class Game extends React.Component {
     );
   }
 }
+
+Game.defaulProps = {
+  guesses: [],
+  feedback: 'Make your guess!',
+  auralStatus: '',
+  correctAnswer: Math.floor(Math.random() * 100) + 1
+}
+
+
+export const mapStateToProps = state({
+  guesses: state.guesses,
+  feedback: state.feedback,
+  auralStatus: state.auralStatus,
+  correctAnswer: state.correctAnswer
+})
+
+export default connect(mapStateToProps(Game));
